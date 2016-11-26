@@ -1,0 +1,25 @@
+{
+  "name": "electron-userland-reports",
+  "version": "1.0.0",
+  "description": "slices of package and repo data from Electron userland",
+  "main": "index.js",
+  "repository": "https://github.com/zeke/electron-userland-reports",
+  "author": "zeke",
+  "license": "MIT",
+  "devDependencies": {
+    "ap-style-title-case": "^1.0.1",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "repos-using-electron": "^1.6.0",
+    "revalidator": "^0.3.1",
+    "standard": "^8.6.0"
+  },
+  "scripts": {
+    "test": "mocha && standard"
+  },
+  "standard": {
+    "env": {
+      "mocha": true
+    }
+  }
+}
