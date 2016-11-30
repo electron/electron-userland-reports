@@ -7,19 +7,30 @@
   "author": "zeke",
   "license": "MIT",
   "devDependencies": {
+    "all-the-packages": "^1.0.2",
     "ap-style-title-case": "^1.0.1",
     "chai": "^3.5.0",
+    "count-array-values": "^1.2.1",
+    "electron-npm-packages": "^2.0.3",
+    "fetch-nice-package": "^1.0.2",
+    "get-first-commit": "^0.2.0",
+    "lodash": "^4.17.2",
     "mocha": "^3.2.0",
-    "repos-using-electron": "^1.6.0",
+    "nice-package": "^1.2.5",
+    "repos-using-electron": "^1.9.0",
     "revalidator": "^0.3.1",
     "standard": "^8.6.0"
   },
   "scripts": {
+    "build": "node bin/build.js",
     "test": "mocha && standard"
   },
   "standard": {
     "env": {
       "mocha": true
     }
+  },
+  "engines": {
+    "node": ">=6"
   }
 }
