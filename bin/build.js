@@ -45,13 +45,13 @@ function finish () {
   new Report({
     title: 'Top Dependencies in Apps',
     description: 'npm packages that are used most often as `dependencies` in Electron apps',
-    collection: topDeps.map(package => pick(package, desirablePackageProps))
+    collection: topDeps.map(pkg => pick(pkg, desirablePackageProps))
   }).save()
 
   new Report({
     title: 'Top Development Dependencies in Apps',
     description: 'npm packages that are used most often as `devDependencies` in Electron apps',
-    collection: topDevDeps.map(package => pick(package, desirablePackageProps))
+    collection: topDevDeps.map(pkg => pick(pkg, desirablePackageProps))
   }).save()
 
   new Report({
@@ -64,7 +64,7 @@ function finish () {
     title: 'Electron-specific packages most-depended-on by other npm packages',
     description: 'Electron-specific npm packages that are depended on by other npm packages',
     collection: electronNpmPackages
-      .map(package => pick(package, desirablePackageProps))
+      .map(pkg => pick(pkg, desirablePackageProps))
       .map(utils.convertDepListToCount)
       .sort((a, b) => b.totalDeps - a.totalDeps)
       .slice(0, MAX_RESULTS)
@@ -74,7 +74,7 @@ function finish () {
     title: 'Most-downloaded Electron-specific npm Packages',
     description: 'Electron-specific npm packages that are depended on by other npm packages',
     collection: electronNpmPackages
-      .map(package => pick(package, desirablePackageProps))
+      .map(pkg => pick(pkg, desirablePackageProps))
       .map(utils.convertDepListToCount)
       .sort((a, b) => b.downloadsInLastMonth - a.downloadsInLastMonth)
       .slice(0, MAX_RESULTS)

@@ -1,0 +1,6 @@
+const fs = require('fs')
+const path = require('path')
+const Report = require('./lib/report')
+const basepath = path.join(__dirname, 'reports')
+module.exports = fs.readdirSync(basepath)
+  .map(basename => new Report(require(path.join(basepath, basename))))
