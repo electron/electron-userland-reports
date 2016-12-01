@@ -22,7 +22,8 @@ const desirablePackageProps = [
   'downloadsInLastMonth',
   'repository',
   'keywords',
-  'author'
+  'author',
+  'owners'
 ]
 
 registry
@@ -43,26 +44,26 @@ function finish () {
   topDevDeps.forEach(dep => Object.assign(dep, packageData[dep.name]))
 
   new Report({
-    title: 'Top Dependencies in Apps',
-    description: 'npm packages that are used most often as `dependencies` in Electron apps',
+    title: 'Popular App Dependencies',
+    description: 'A list of the top npm packages most often listed as `dependencies` in Electron apps.',
     collection: topDeps.map(pkg => pick(pkg, desirablePackageProps))
   }).save()
 
   new Report({
-    title: 'Top Development Dependencies in Apps',
-    description: 'npm packages that are used most often as `devDependencies` in Electron apps',
+    title: 'Popular App Development Dependencies',
+    description: 'A list of the top npm packages most often listed as `devDependencies` in Electron apps.',
     collection: topDevDeps.map(pkg => pick(pkg, desirablePackageProps))
   }).save()
 
   new Report({
-    title: 'Top GitHub Contributors',
-    description: 'GitHub users that have contributed to the most Electron repositories',
+    title: 'Prolific GitHub Contributors',
+    description: 'GitHub users that have contributed to the most Electron-related repositories.',
     collection: utils.getTopContributors(repos).slice(0, MAX_RESULTS)
   }).save()
 
   new Report({
-    title: 'Electron-specific packages most-depended-on by other npm packages',
-    description: 'Electron-specific npm packages that are depended on by other npm packages',
+    title: 'Popular Low-level Dependencies',
+    description: 'Electron-related npm packages that are frequently depended on by other npm packages.',
     collection: electronNpmPackages
       .map(pkg => pick(pkg, desirablePackageProps))
       .map(utils.convertDepListToCount)
@@ -70,9 +71,11 @@ function finish () {
       .slice(0, MAX_RESULTS)
   }).save()
 
+  // 'Popular Low-level Development Dependencies'
+
   new Report({
-    title: 'Most-downloaded Electron-specific npm Packages',
-    description: 'Electron-specific npm packages that are depended on by other npm packages',
+    title: 'Most-downloaded npm Packages',
+    description: 'Electron-related npm packages that are downloaded a lot.',
     collection: electronNpmPackages
       .map(pkg => pick(pkg, desirablePackageProps))
       .map(utils.convertDepListToCount)
