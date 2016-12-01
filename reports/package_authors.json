@@ -1,5 +1,6 @@
 {
-  "title": "Prolific Package Authors",
+  "slug": "package_authors",
+  "title": "Package Authors",
   "description": "npm users who maintain numerous Electron-related packages.",
   "collectionType": "npmUser",
   "collection": [
@@ -1587,6 +1588,5 @@
       "freenode": null,
       "gravatar": "https://gravatar.com/avatar/98014649279dcef04f67ee307e3b9597?size=200&default=https%3A%2F%2Fcldup.com%2FFIjisumbxl.png"
     }
-  ],
-  "basename": "prolific_package_authors"
+  ]
 }

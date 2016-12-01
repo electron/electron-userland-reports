@@ -3,6 +3,7 @@ const expect = require('chai').expect
 
 describe('Report class', () => {
   const goodParams = {
+    slug: 'githubbers',
     title: 'Prolific GitHubbers',
     description: 'Users on GitHub who work on lots of Electron apps.',
     collection: ['sally', 'bob', 'haxor'],
@@ -12,6 +13,13 @@ describe('Report class', () => {
 
   it('is valid if all required metadata is present', () => {
     expect(report.valid).to.equal(true)
+  })
+
+  it('requires a slug', () => {
+    const report = new Report(Object.assign({}, goodParams, {slug: null}))
+    expect(report.valid).to.equal(false)
+    expect(report.validationErrors.length).to.equal(1)
+    expect(report.validationErrors[0].property).to.equal('slug')
   })
 
   it('requires a title', () => {

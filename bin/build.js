@@ -30,42 +30,48 @@ function finish () {
   topDevDeps.forEach(pkg => Object.assign(pkg, registryData[pkg.name]))
 
   new Report({
-    title: 'Popular App Dependencies',
-    description: 'A list of the top npm packages most often listed as `dependencies` in Electron apps.',
+    slug: 'dependencies',
+    title: 'App Dependencies',
+    description: 'We searched every public repository on GitHub to compile this list of npm packages that are most often listed as `dependencies` in apps that also depend on `electron` or `electron-prebuilt`.',
     collectionType: 'Package',
     collection: topDeps
   }).save()
 
   new Report({
-    title: 'Popular App Development Dependencies',
-    description: 'A list of the top npm packages most often listed as `devDependencies` in Electron apps.',
+    slug: 'dev_dependencies',
+    title: 'App Development Dependencies',
+    description: 'This list highlights npm packages that are most often listed as `devDependencies` in apps that also depend on `electron` or `electron-prebuilt`.',
     collectionType: 'Package',
     collection: topDevDeps
   }).save()
 
   new Report({
-    title: 'Prolific GitHub Contributors',
-    description: 'GitHub users that have contributed to the most Electron-related repositories.',
+    slug: 'github_contributors',
+    title: 'GitHub Contributors',
+    description: 'GitHub users who have contributed to numerous Electron-related repositories.',
     collectionType: 'GithubUser',
     collection: utils.getTopContributors(repos)
   }).save()
 
   new Report({
-    title: 'Popular Low-level Dependencies',
+    slug: 'package_dependencies',
+    title: 'Package Dependencies',
     description: 'Electron-related npm packages that are frequently depended on by other npm packages.',
     collectionType: 'Package',
     collection: electronNpmPackages.sort((a, b) => b.totalDeps - a.totalDeps)
   }).save()
 
   new Report({
-    title: 'Most-downloaded npm Packages',
+    slug: 'most_downloaded_packages',
+    title: 'Most Downloaded Packages',
     description: 'Electron-related npm packages that are downloaded a lot.',
     collectionType: 'Package',
     collection: electronNpmPackages.sort((a, b) => b.downloadsInLastMonth - a.downloadsInLastMonth)
   }).save()
 
   new Report({
-    title: 'Prolific Package Authors',
+    slug: 'package_authors',
+    title: 'Package Authors',
     description: 'npm users who maintain numerous Electron-related packages.',
     collectionType: 'npmUser',
     collection: utils.getTopPackageAuthors(electronNpmPackages)
