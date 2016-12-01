@@ -1,7 +1,7 @@
 {
   "name": "electron-userland-reports",
   "version": "1.0.0",
-  "description": "slices of package and repo data from Electron userland",
+  "description": "Slices of data about packages, repos, and users in Electron userland. Collected from the GitHub API, npm registry, and libraries.io",
   "main": "index.js",
   "repository": "https://github.com/zeke/electron-userland-reports",
   "author": "zeke",
