@@ -7,6 +7,8 @@ const repos = require('repos-using-electron').filter(repo => !repo.fork && !repo
 const electronNpmPackages = require('electron-npm-packages')
 const topDeps = utils.getTopDependencies(repos).slice(0, Report.MAX_RESULTS)
 const topDevDeps = utils.getTopDevDependencies(repos).slice(0, Report.MAX_RESULTS)
+const allPackageRepos = require('all-the-package-repos')
+const allPackageRepoUrls = Object.keys(allPackageRepos).map(name => allPackageRepos[name])
 
 // Collect package metadata from the npm registry
 const registry = require('all-the-packages')
@@ -75,6 +77,16 @@ function finish () {
     description: 'The most prolific authors of Electron-related npm packages.',
     collectionType: 'npmUser',
     collection: utils.getTopPackageAuthors(electronNpmPackages)
+  }).save()
+
+  new Report({
+  slug: 'starred_apps',
+  title: 'Starred Apps',
+  description: 'Electron apps (that are not npm packages) with numerous stargazers.',
+  collectionType: 'Repository',
+  collection: repos
+    .filter(repo => !allPackageRepoUrls.includes(repo.htmlUrl))
+    .sort((a, b) => b.stargazersCount - a.stargazersCount)
   }).save()
 
   // TODO: 'Popular Low-level Development Dependencies'
