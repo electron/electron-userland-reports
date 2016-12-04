@@ -32,7 +32,7 @@ function finish () {
   new Report({
     slug: 'dependencies',
     title: 'App Dependencies',
-    description: 'We searched every public repository on GitHub to compile this list of npm packages that are most often listed as `dependencies` in apps that also depend on `electron` or `electron-prebuilt`.',
+    description: 'Packages most often listed as `dependencies` in apps that also depend on `electron` or `electron-prebuilt`',
     collectionType: 'Package',
     collection: topDeps
   }).save()
@@ -40,7 +40,7 @@ function finish () {
   new Report({
     slug: 'dev_dependencies',
     title: 'App Development Dependencies',
-    description: 'This list highlights npm packages that are most often listed as `devDependencies` in apps that also depend on `electron` or `electron-prebuilt`.',
+    description: 'Packages most often listed as `devDependencies` in apps that also depend on `electron` or `electron-prebuilt`',
     collectionType: 'Package',
     collection: topDevDeps
   }).save()
@@ -48,7 +48,7 @@ function finish () {
   new Report({
     slug: 'github_contributors',
     title: 'GitHub Contributors',
-    description: 'GitHub users who have contributed to numerous Electron-related repositories.',
+    description: 'People who have contributed to numerous Electron-related GitHub repositories.',
     collectionType: 'GithubUser',
     collection: utils.getTopContributors(repos)
   }).save()
@@ -72,7 +72,7 @@ function finish () {
   new Report({
     slug: 'package_authors',
     title: 'Package Authors',
-    description: 'npm users who maintain numerous Electron-related packages.',
+    description: 'The most prolific authors of Electron-related npm packages.',
     collectionType: 'npmUser',
     collection: utils.getTopPackageAuthors(electronNpmPackages)
   }).save()
