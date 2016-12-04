@@ -32,7 +32,7 @@ function finish () {
   new Report({
     slug: 'dependencies',
     title: 'App Dependencies',
-    description: 'Packages most often listed as `dependencies` in apps that also depend on `electron` or `electron-prebuilt`',
+    description: 'Packages most often listed as `dependencies` in Electron apps.',
     collectionType: 'Package',
     collection: topDeps
   }).save()
@@ -40,7 +40,7 @@ function finish () {
   new Report({
     slug: 'dev_dependencies',
     title: 'App Development Dependencies',
-    description: 'Packages most often listed as `devDependencies` in apps that also depend on `electron` or `electron-prebuilt`',
+    description: 'Packages most often listed as `devDependencies` in Electron apps.',
     collectionType: 'Package',
     collection: topDevDeps
   }).save()
@@ -48,7 +48,7 @@ function finish () {
   new Report({
     slug: 'github_contributors',
     title: 'GitHub Contributors',
-    description: 'People who have contributed to numerous Electron-related GitHub repositories.',
+    description: 'GitHub users who have contributed to numerous Electron-related GitHub repositories.',
     collectionType: 'GithubUser',
     collection: utils.getTopContributors(repos)
   }).save()
