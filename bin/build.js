@@ -1,6 +1,6 @@
 const Report = require('../lib/report')
 const utils = require('../lib/utils')
-const {uniq} = require('lodash')
+const uniq = require('lodash').uniq
 
 // Datasets
 const repos = require('repos-using-electron').filter(repo => !repo.fork && !repo.formerFork)
@@ -80,13 +80,13 @@ function finish () {
   }).save()
 
   new Report({
-  slug: 'starred_apps',
-  title: 'Starred Apps',
-  description: 'Electron apps (that are not npm packages) with numerous stargazers.',
-  collectionType: 'Repository',
-  collection: repos
-    .filter(repo => !allPackageRepoUrls.includes(repo.htmlUrl))
-    .sort((a, b) => b.stargazersCount - a.stargazersCount)
+    slug: 'starred_apps',
+    title: 'Starred Apps',
+    description: 'Electron apps (that are not npm packages) with numerous stargazers.',
+    collectionType: 'Repository',
+    collection: repos
+      .filter(repo => !allPackageRepoUrls.includes(repo.htmlUrl))
+      .sort((a, b) => b.stargazersCount - a.stargazersCount)
   }).save()
 
   // TODO: 'Popular Low-level Development Dependencies'
