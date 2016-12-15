@@ -49,4 +49,10 @@ describe('Report class', () => {
     expect(report.validationErrors.length).to.equal(1)
     expect(report.validationErrors[0].property).to.equal('collectionType')
   })
+
+  it('has an auto-assigned createdAt date property', () => {
+    const report = new Report(goodParams)
+    expect(report.createdAt).to.exist
+    expect(report.createdAt.constructor.name).to.equal('Date')
+  })
 })
