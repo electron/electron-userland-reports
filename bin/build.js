@@ -1,6 +1,6 @@
 const Report = require('../lib/report')
 const utils = require('../lib/utils')
-const {uniq} = require('lodash')
+const uniq = require('lodash').uniq
 
 // Datasets
 const repos = require('repos-using-electron').filter(repo => !repo.fork && !repo.formerFork)
